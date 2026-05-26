@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Survival Alüminyum</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -18,8 +16,12 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
-background:#050505;
+background:#030303;
 overflow-x:hidden;
 color:white;
 }
@@ -31,7 +33,7 @@ content:'';
 position:fixed;
 inset:0;
 background:
-linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.9)),
+linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.9)),
 url('https://images.unsplash.com/photo-1627856014754-2907e2355d24?q=80&w=2070&auto=format&fit=crop');
 background-size:cover;
 background-position:center;
@@ -43,77 +45,74 @@ content:'';
 position:fixed;
 inset:0;
 background:
-radial-gradient(circle at top,#ff990015,transparent 40%),
-radial-gradient(circle at bottom,#0099ff15,transparent 40%);
+radial-gradient(circle at top,#00aaff18,transparent 40%),
+radial-gradient(circle at bottom,#ff990015,transparent 40%);
 z-index:-1;
-}
-
-/* FLOATING PARTICLES */
-
-.particle{
-position:absolute;
-font-size:30px;
-animation:float 8s infinite ease-in-out;
-opacity:.7;
-}
-
-.p1{top:120px;left:80px;}
-.p2{top:200px;right:100px;}
-.p3{bottom:150px;left:100px;}
-.p4{bottom:200px;right:80px;}
-
-@keyframes float{
-0%{transform:translateY(0px);}
-50%{transform:translateY(-25px);}
-100%{transform:translateY(0px);}
 }
 
 /* NAVBAR */
 
-.nav{
+.navbar{
 position:fixed;
 top:0;
+left:0;
 width:100%;
-padding:20px 60px;
+padding:22px 60px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:rgba(0,0,0,.45);
-backdrop-filter:blur(15px);
-border-bottom:1px solid rgba(255,255,255,.08);
+background:rgba(0,0,0,.5);
+backdrop-filter:blur(14px);
+border-bottom:1px solid rgba(255,255,255,.06);
 z-index:999;
 }
 
-.logo-small{
+.logo-box{
 display:flex;
 align-items:center;
 gap:15px;
 }
 
-.logo-small img{
+.logo-box img{
 width:70px;
 }
 
-.logo-small h2{
-font-size:28px;
+.logo-text{
+font-size:27px;
 font-weight:900;
 line-height:1;
 }
 
-.menu{
+.nav-links{
 display:flex;
 gap:40px;
 }
 
-.menu a{
+.nav-links a{
+color:#d8d8d8;
 text-decoration:none;
-color:#ddd;
 font-weight:700;
+font-size:15px;
+transition:.3s;
+position:relative;
+}
+
+.nav-links a:hover{
+color:#00aaff;
+}
+
+.discord-top{
+padding:14px 28px;
+border-radius:14px;
+border:1px solid #5865F2;
+background:rgba(88,101,242,.12);
+font-weight:800;
+cursor:pointer;
 transition:.3s;
 }
 
-.menu a:hover{
-color:#ffb300;
+.discord-top:hover{
+transform:scale(1.05);
 }
 
 /* HERO */
@@ -123,15 +122,17 @@ min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
-padding:120px 30px 80px;
+padding-top:140px;
+padding-bottom:80px;
 position:relative;
 }
 
 .hero-content{
-max-width:1300px;
+width:100%;
+max-width:1400px;
 text-align:center;
+padding:0 25px;
 position:relative;
-z-index:2;
 }
 
 /* MAIN LOGO */
@@ -139,34 +140,75 @@ z-index:2;
 .main-logo{
 width:850px;
 max-width:100%;
-animation:logoFloat 5s infinite ease-in-out;
+animation:floatLogo 5s ease-in-out infinite;
 filter:
-drop-shadow(0 0 25px rgba(255,170,0,.25))
-drop-shadow(0 0 90px rgba(0,170,255,.18));
+drop-shadow(0 0 30px rgba(0,170,255,.2))
+drop-shadow(0 0 80px rgba(255,170,0,.15));
 }
 
-@keyframes logoFloat{
-0%{transform:translateY(0px);}
-50%{transform:translateY(-18px);}
-100%{transform:translateY(0px);}
+@keyframes floatLogo{
+0%{
+transform:translateY(0px);
 }
+50%{
+transform:translateY(-16px);
+}
+100%{
+transform:translateY(0px);
+}
+}
+
+/* CHARACTERS */
+
+.character{
+position:absolute;
+width:230px;
+animation:floatChar 5s ease-in-out infinite;
+}
+
+.char-left{
+left:-20px;
+top:170px;
+}
+
+.char-right{
+right:-20px;
+top:170px;
+}
+
+@keyframes floatChar{
+0%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-14px);
+}
+100%{
+transform:translateY(0px);
+}
+}
+
+/* SUBTITLE */
 
 .subtitle{
-font-size:45px;
+font-size:42px;
 font-weight:900;
-margin-top:20px;
-margin-bottom:25px;
+margin-top:15px;
+margin-bottom:22px;
 }
 
 .subtitle span{
 color:#ffb300;
 }
 
-.desc{
-font-size:22px;
-color:#ccc;
-margin-bottom:40px;
-line-height:1.8;
+.subicons{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+font-size:20px;
+margin-bottom:35px;
+color:#ddd;
 }
 
 /* BUTTONS */
@@ -176,187 +218,209 @@ display:flex;
 justify-content:center;
 gap:25px;
 flex-wrap:wrap;
-margin-bottom:50px;
-}
-
-.btn{
-padding:22px 40px;
-border-radius:24px;
-font-size:20px;
-font-weight:800;
-cursor:pointer;
-transition:.3s;
-border:none;
+margin-bottom:60px;
 }
 
 .play-btn{
-background:linear-gradient(135deg,#ffb300,#ff7b00);
-color:white;
-box-shadow:0 0 40px rgba(255,170,0,.35);
+background:linear-gradient(135deg,#0099ff,#0055ff);
+padding:24px 42px;
+border-radius:24px;
+font-size:24px;
+font-weight:900;
+border:1px solid #3cb8ff;
+cursor:pointer;
+box-shadow:0 0 45px rgba(0,153,255,.35);
+transition:.3s;
 }
 
 .play-btn:hover{
-transform:scale(1.08);
+transform:scale(1.06);
 }
 
 .discord-btn{
 background:linear-gradient(135deg,#5865F2,#7289da);
-color:white;
-box-shadow:0 0 40px rgba(88,101,242,.35);
+padding:24px 42px;
+border-radius:24px;
+font-size:24px;
+font-weight:900;
+border:none;
+cursor:pointer;
+box-shadow:0 0 45px rgba(88,101,242,.3);
+transition:.3s;
 }
 
 .discord-btn:hover{
-transform:scale(1.08);
+transform:scale(1.06);
 }
 
-/* FEATURES */
+/* MINI FEATURES */
+
+.mini-features{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+margin-top:25px;
+}
+
+.mini-box{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+padding:25px;
+border-radius:22px;
+backdrop-filter:blur(15px);
+transition:.3s;
+}
+
+.mini-box:hover{
+transform:translateY(-6px);
+border-color:#ffb30055;
+}
+
+.mini-box h3{
+font-size:22px;
+margin-bottom:8px;
+}
+
+.mini-box p{
+color:#c0c0c0;
+line-height:1.6;
+font-size:14px;
+}
+
+/* SECTION */
 
 .section{
-max-width:1450px;
+max-width:1500px;
 margin:auto;
-padding:110px 35px;
+padding:110px 30px;
 }
 
 .section-title{
-font-size:70px;
+font-size:60px;
 font-weight:900;
 text-align:center;
-margin-bottom:20px;
+margin-bottom:16px;
 }
 
 .section-desc{
 text-align:center;
+font-size:20px;
 color:#aaa;
-font-size:22px;
-margin-bottom:70px;
+margin-bottom:65px;
 }
 
-.grid{
+/* CARDS */
+
+.card-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:30px;
+grid-template-columns:repeat(6,1fr);
+gap:22px;
 }
 
 .card{
-background:rgba(255,255,255,.05);
+background:rgba(255,255,255,.04);
 border:1px solid rgba(255,255,255,.08);
-backdrop-filter:blur(18px);
-padding:45px;
-border-radius:35px;
-transition:.4s;
-position:relative;
-overflow:hidden;
-}
-
-.card::before{
-content:'';
-position:absolute;
-inset:0;
-background:linear-gradient(135deg,rgba(255,255,255,.08),transparent);
-opacity:0;
-transition:.4s;
-}
-
-.card:hover::before{
-opacity:1;
+border-radius:25px;
+padding:30px 22px;
+text-align:center;
+transition:.3s;
+backdrop-filter:blur(15px);
 }
 
 .card:hover{
-transform:translateY(-12px) scale(1.02);
-border-color:#ffb30055;
-box-shadow:0 0 40px rgba(255,170,0,.12);
+transform:translateY(-8px);
+border-color:#0099ff55;
+box-shadow:0 0 35px rgba(0,153,255,.15);
 }
 
-.card-icon{
-font-size:65px;
-margin-bottom:25px;
+.card .emoji{
+font-size:52px;
+margin-bottom:18px;
 }
 
-.card h3{
-font-size:34px;
-margin-bottom:15px;
-font-weight:900;
+.card h2{
+font-size:24px;
+margin-bottom:14px;
 }
 
 .card p{
-color:#c0c0c0;
-line-height:1.8;
-font-size:17px;
+font-size:15px;
+line-height:1.7;
+color:#c8c8c8;
 }
 
 /* STATS */
 
 .stats{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
+grid-template-columns:repeat(5,1fr);
+gap:22px;
 }
 
 .stat{
-background:rgba(255,255,255,.05);
+background:rgba(255,255,255,.04);
 border:1px solid rgba(255,255,255,.08);
-padding:45px;
-border-radius:35px;
+padding:35px;
+border-radius:24px;
 text-align:center;
-backdrop-filter:blur(15px);
+backdrop-filter:blur(14px);
 }
 
-.stat h2{
-font-size:60px;
+.stat h1{
+font-size:52px;
 font-weight:900;
 margin-bottom:10px;
-color:#ffb300;
+color:#00aaff;
 }
 
 .stat p{
+font-size:17px;
 color:#bbb;
-font-size:18px;
 }
 
 /* VIP */
 
 .vip-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:35px;
+grid-template-columns:repeat(3,1fr);
+gap:28px;
 }
 
 .vip{
-padding:50px;
-border-radius:35px;
+padding:45px;
+border-radius:30px;
 backdrop-filter:blur(18px);
-transition:.4s;
+transition:.3s;
 position:relative;
 overflow:hidden;
 }
 
 .vip:hover{
-transform:translateY(-12px) scale(1.03);
+transform:translateY(-10px) scale(1.02);
 }
 
 .vip1{
-background:linear-gradient(135deg,#00c85322,#00ff9955);
-border:1px solid #00ff9955;
+background:linear-gradient(135deg,#0051ff22,#00aaff22);
+border:1px solid #00aaff55;
 }
 
 .vip2{
-background:linear-gradient(135deg,#8e24aa22,#d500f955);
-border:1px solid #d500f955;
+background:linear-gradient(135deg,#8000ff22,#ff00ff22);
+border:1px solid #ff00ff55;
 }
 
 .vip3{
-background:linear-gradient(135deg,#ff910022,#ff3d0055);
-border:1px solid #ff910055;
+background:linear-gradient(135deg,#ff990022,#ff550022);
+border:1px solid #ff990055;
 }
 
 .vip h2{
-font-size:45px;
-margin-bottom:15px;
-font-weight:900;
+font-size:44px;
+margin-bottom:14px;
 }
 
 .price{
-font-size:65px;
+font-size:62px;
 font-weight:900;
 margin-bottom:25px;
 }
@@ -367,11 +431,11 @@ margin-bottom:30px;
 }
 
 .vip ul li{
-margin-bottom:14px;
+margin-bottom:12px;
 font-size:18px;
 }
 
-.buy-btn{
+.buy{
 width:100%;
 padding:18px;
 border:none;
@@ -379,35 +443,88 @@ border-radius:18px;
 font-size:19px;
 font-weight:900;
 cursor:pointer;
-background:white;
-color:black;
 transition:.3s;
 }
 
-.buy-btn:hover{
+.buy:hover{
 transform:scale(1.05);
+}
+
+/* CTA */
+
+.cta{
+margin-top:90px;
+padding:70px;
+border-radius:35px;
+text-align:center;
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(18px);
+}
+
+.cta h1{
+font-size:58px;
+margin-bottom:16px;
+}
+
+.cta p{
+font-size:20px;
+color:#bbb;
+margin-bottom:35px;
 }
 
 /* FOOTER */
 
 footer{
-padding:45px;
-text-align:center;
+margin-top:70px;
+padding:40px;
 border-top:1px solid rgba(255,255,255,.08);
-color:#888;
-margin-top:60px;
+text-align:center;
+color:#777;
 }
 
 /* MOBILE */
 
-@media(max-width:900px){
+@media(max-width:1200px){
 
-.nav{
-padding:20px;
+.card-grid{
+grid-template-columns:repeat(3,1fr);
 }
 
-.menu{
+.stats{
+grid-template-columns:repeat(2,1fr);
+}
+
+.mini-features{
+grid-template-columns:repeat(2,1fr);
+}
+
+.character{
 display:none;
+}
+
+}
+
+@media(max-width:768px){
+
+.nav-links{
+display:none;
+}
+
+.card-grid{
+grid-template-columns:1fr;
+}
+
+.stats{
+grid-template-columns:1fr;
+}
+
+.vip-grid{
+grid-template-columns:1fr;
+}
+
+.mini-features{
+grid-template-columns:1fr;
 }
 
 .subtitle{
@@ -415,11 +532,21 @@ font-size:28px;
 }
 
 .section-title{
-font-size:42px;
+font-size:40px;
 }
 
-.desc{
-font-size:18px;
+.cta h1{
+font-size:40px;
+}
+
+.buttons{
+flex-direction:column;
+}
+
+.play-btn,
+.discord-btn{
+width:100%;
+font-size:20px;
 }
 
 }
@@ -429,34 +556,32 @@ font-size:18px;
 
 <body>
 
-<!-- FLOATING EMOJIS -->
-
-<div class="particle p1">🔥</div>
-<div class="particle p2">😍</div>
-<div class="particle p3">💎</div>
-<div class="particle p4">⚔️</div>
-
 <!-- NAVBAR -->
 
-<nav class="nav">
+<nav class="navbar">
 
-<div class="logo-small">
+<div class="logo-box">
 
 <img src="logo.png">
 
-<h2>
+<div class="logo-text">
 SURVIVAL<br>
 ALÜMİNYUM
-</h2>
+</div>
 
 </div>
 
-<div class="menu">
-<a href="">Anasayfa</a>
-<a href="">Özellikler</a>
+<div class="nav-links">
+<a href="">ANA SAYFA</a>
+<a href="">ÖZELLİKLER</a>
+<a href="">SİSTEMLER</a>
 <a href="">VIP</a>
-<a href="">İstatistik</a>
-<a href="">Discord</a>
+<a href="">SIRALAMA</a>
+<a href="">YARDIM</a>
+</div>
+
+<div class="discord-top">
+💬 DISCORD
 </div>
 
 </nav>
@@ -467,30 +592,60 @@ ALÜMİNYUM
 
 <div class="hero-content">
 
+<img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/9/91/Steve_%28Minecraft%29.png" class="character char-left">
+
+<img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/7/70/Skeleton.png" class="character char-right">
+
 <img src="logo.png" class="main-logo">
 
 <h1 class="subtitle">
-🔥 EFSANE BİR <span>SURVIVAL</span> DENEYİMİ 🔥
+⚔️ GERÇEK <span>SURVIVAL</span> DENEYİMİ ⚔️
 </h1>
 
-<p class="desc">
-⚔️ Klan savaşları, 💰 ekonomi sistemi, 🎁 özel kasalar,
-👑 rank sistemi ve 🚀 ultra akıcı gameplay ile premium Minecraft deneyimi seni bekliyor.
-</p>
+<div class="subicons">
+<div>⚔️ Klan sistemi</div>
+<div>💰 Ekonomi</div>
+<div>🎁 Eventler</div>
+<div>👑 Rank sistemi</div>
+</div>
 
 <div class="buttons">
 
-<button class="btn play-btn" onclick="copyIP()">
-🎮 play.survivalaliminyum.com
+<button class="play-btn" onclick="copyIP()">
+🎮 OYNA
 </button>
 
-<button class="btn discord-btn">
-💬 Discord'a Katıl
+<button class="discord-btn">
+💬 DISCORD'A KATIL
 </button>
 
 </div>
 
-<p id="copyText" style="color:#ddd;font-weight:700;"></p>
+<p id="copyText" style="font-size:18px;font-weight:700;color:#ddd;"></p>
+
+<div class="mini-features">
+
+<div class="mini-box">
+<h3>🔥 AKTİF YÖNETİM</h3>
+<p>7/24 aktif yetkili ekibi ile yönetim desteği.</p>
+</div>
+
+<div class="mini-box">
+<h3>🛡️ GÜVENLİK</h3>
+<p>Gelişmiş anti-hile sistemleri ile koruma.</p>
+</div>
+
+<div class="mini-box">
+<h3>🎁 ETKİNLİKLER</h3>
+<p>Her gün ödüllü etkinlikler ve turnuvalar.</p>
+</div>
+
+<div class="mini-box">
+<h3>💎 ÖZEL SİSTEMLER</h3>
+<p>Eşsiz survival sistemleri ve premium içerikler.</p>
+</div>
+
+</div>
 
 </div>
 
@@ -500,62 +655,50 @@ ALÜMİNYUM
 
 <section class="section">
 
-<h2 class="section-title">
-⚡ Özel Sistemler
-</h2>
+<h1 class="section-title">
+⚡ SUNUCU ÖZELLİKLERİ
+</h1>
 
 <p class="section-desc">
-Survival Alüminyum'un premium özelliklerini keşfet.
+Eşsiz sistemler ve içeriklerle dolu premium deneyim.
 </p>
 
-<div class="grid">
+<div class="card-grid">
 
 <div class="card">
-<div class="card-icon">⚔️</div>
-<h3>Klan Sistemi</h3>
-<p>
-Arkadaşlarınla takım kur, savaşlara katıl ve bölgeleri ele geçir.
-</p>
+<div class="emoji">⚔️</div>
+<h2>KLAN SİSTEMİ</h2>
+<p>Klanını kur, savaşlara katıl ve bölgeleri ele geçir.</p>
 </div>
 
 <div class="card">
-<div class="card-icon">🎁</div>
-<h3>Kasa Sistemi</h3>
-<p>
-Özel ödüller, kozmetikler ve nadir itemler kazan.
-</p>
+<div class="emoji">💰</div>
+<h2>EKONOMİ</h2>
+<p>Gelişmiş market sistemi ve oyuncu ekonomisi.</p>
 </div>
 
 <div class="card">
-<div class="card-icon">💰</div>
-<h3>Ekonomi Sistemi</h3>
-<p>
-Gelişmiş market sistemi ve oyuncular arası ticaret.
-</p>
+<div class="emoji">🎁</div>
+<h2>KASA</h2>
+<p>Özel kasalar ve eşsiz item ödülleri kazan.</p>
 </div>
 
 <div class="card">
-<div class="card-icon">👑</div>
-<h3>Rank Sistemi</h3>
-<p>
-Görevleri tamamla, rank atla ve avantaj kazan.
-</p>
+<div class="emoji">👑</div>
+<h2>RANK</h2>
+<p>Görevleri tamamla ve rank atlayarak geliş.</p>
 </div>
 
 <div class="card">
-<div class="card-icon">🐉</div>
-<h3>Boss Eventleri</h3>
-<p>
-Boss savaşlarına katıl ve büyük ödülleri kap.
-</p>
+<div class="emoji">🐉</div>
+<h2>BOSS</h2>
+<p>Boss savaşlarında ödülleri toplamaya çalış.</p>
 </div>
 
 <div class="card">
-<div class="card-icon">🚀</div>
-<h3>Lag'sız Deneyim</h3>
-<p>
-Optimize edilmiş güçlü altyapı ile ultra performans.
-</p>
+<div class="emoji">🎉</div>
+<h2>EVENTLER</h2>
+<p>Her gün farklı etkinlikler ve ödüller seni bekliyor.</p>
 </div>
 
 </div>
@@ -566,34 +709,39 @@ Optimize edilmiş güçlü altyapı ile ultra performans.
 
 <section class="section">
 
-<h2 class="section-title">
-📊 Sunucu İstatistikleri
-</h2>
+<h1 class="section-title">
+📊 SUNUCU İSTATİSTİKLERİ
+</h1>
 
 <p class="section-desc">
-Sunucunun canlı durumunu takip et.
+Canlı sunucu durumunu takip et.
 </p>
 
 <div class="stats">
 
 <div class="stat">
-<h2>521</h2>
-<p>👥 Aktif Oyuncu</p>
+<h1>127</h1>
+<p>👥 AKTİF OYUNCU</p>
 </div>
 
 <div class="stat">
-<h2>24/7</h2>
-<p>🟢 Aktif Sunucu</p>
+<h1>24/7</h1>
+<p>🟢 AKTİF SUNUCU</p>
 </div>
 
 <div class="stat">
-<h2>99.9%</h2>
-<p>⚡ Uptime</p>
+<h1>99.9%</h1>
+<p>⚡ UPTIME</p>
 </div>
 
 <div class="stat">
-<h2>1.8+</h2>
-<p>🧩 Sürüm Desteği</p>
+<h1>DDOS</h1>
+<p>🛡️ KORUMA</p>
+</div>
+
+<div class="stat">
+<h1>1.20</h1>
+<p>🧩 SÜRÜM</p>
 </div>
 
 </div>
@@ -604,19 +752,19 @@ Sunucunun canlı durumunu takip et.
 
 <section class="section">
 
-<h2 class="section-title">
-💎 VIP Paketleri
-</h2>
+<h1 class="section-title">
+👑 VIP PAKETLERİ
+</h1>
 
 <p class="section-desc">
-Sunucuya destek ol ve avantaj kazan.
+Sunucuya destek ol ve premium avantajlar kazan.
 </p>
 
 <div class="vip-grid">
 
 <div class="vip vip1">
 
-<h2>VIP 👑</h2>
+<h2>⭐ VIP</h2>
 
 <div class="price">₺99</div>
 
@@ -627,15 +775,15 @@ Sunucuya destek ol ve avantaj kazan.
 <li>✔️ Market Avantajı</li>
 </ul>
 
-<button class="buy-btn">
-🛒 Satın Al
+<button class="buy">
+🛒 SATIN AL
 </button>
 
 </div>
 
 <div class="vip vip2">
 
-<h2>ELITE ✨</h2>
+<h2>✨ ELITE</h2>
 
 <div class="price">₺199</div>
 
@@ -646,27 +794,51 @@ Sunucuya destek ol ve avantaj kazan.
 <li>✔️ Özel Kozmetikler</li>
 </ul>
 
-<button class="buy-btn">
-🛒 Satın Al
+<button class="buy">
+🛒 SATIN AL
 </button>
 
 </div>
 
 <div class="vip vip3">
 
-<h2>LEGEND 🔥</h2>
+<h2>🔥 LEGEND</h2>
 
 <div class="price">₺349</div>
 
 <ul>
 <li>✔️ Fly Yetkisi</li>
 <li>✔️ Legend Kit</li>
-<li>✔️ Özel Kozmetikler</li>
+<li>✔️ Kozmetikler</li>
 <li>✔️ Tüm Avantajlar</li>
 </ul>
 
-<button class="buy-btn">
-🛒 Satın Al
+<button class="buy">
+🛒 SATIN AL
+</button>
+
+</div>
+
+</div>
+
+<div class="cta">
+
+<h1>
+🚀 HEMEN ARAMIZA KATIL!
+</h1>
+
+<p>
+Binlerce oyuncu ile unutulmaz survival deneyimine başla.
+</p>
+
+<div class="buttons">
+
+<button class="play-btn">
+🎮 OYNA
+</button>
+
+<button class="discord-btn">
+💬 DISCORD
 </button>
 
 </div>
@@ -676,7 +848,7 @@ Sunucuya destek ol ve avantaj kazan.
 </section>
 
 <footer>
-© 2026 Survival Alüminyum • Tüm Hakları Saklıdır
+© 2026 SURVIVAL ALÜMİNYUM — TÜM HAKLARI SAKLIDIR.
 </footer>
 
 <script>
@@ -686,7 +858,7 @@ function copyIP(){
 navigator.clipboard.writeText("play.survivalaliminyum.com");
 
 document.getElementById("copyText").innerHTML =
-"✅ IP adresi kopyalandı!";
+"✅ IP KOPYALANDI: play.survivalaliminyum.com";
 
 }
 
