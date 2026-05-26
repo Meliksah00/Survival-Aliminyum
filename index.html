@@ -3,12 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Survival Alüminyum</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
@@ -20,80 +18,102 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
-html{
-scroll-behavior:smooth;
-}
-
 body{
 background:#050505;
 overflow-x:hidden;
 color:white;
 }
 
-/* SCROLLBAR */
-
-::-webkit-scrollbar{
-width:10px;
-}
-
-::-webkit-scrollbar-thumb{
-background:white;
-border-radius:999px;
-}
-
 /* BACKGROUND */
 
-.bg-animation{
+body::before{
+content:'';
 position:fixed;
-width:100%;
-height:100%;
-top:0;
-left:0;
-overflow:hidden;
+inset:0;
+background:
+linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.9)),
+url('https://images.unsplash.com/photo-1627856014754-2907e2355d24?q=80&w=2070&auto=format&fit=crop');
+background-size:cover;
+background-position:center;
+z-index:-2;
+}
+
+body::after{
+content:'';
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top,#ff990015,transparent 40%),
+radial-gradient(circle at bottom,#0099ff15,transparent 40%);
 z-index:-1;
 }
 
-.circle{
+/* FLOATING PARTICLES */
+
+.particle{
 position:absolute;
-border-radius:999px;
-background:rgba(255,255,255,0.05);
-animation:float 12s infinite linear;
-filter:blur(60px);
+font-size:30px;
+animation:float 8s infinite ease-in-out;
+opacity:.7;
 }
 
-.circle:nth-child(1){
-width:400px;
-height:400px;
-top:-100px;
-left:-100px;
-}
-
-.circle:nth-child(2){
-width:500px;
-height:500px;
-bottom:-200px;
-right:-100px;
-animation-duration:16s;
-}
-
-.circle:nth-child(3){
-width:300px;
-height:300px;
-top:40%;
-left:40%;
-animation-duration:20s;
-}
+.p1{top:120px;left:80px;}
+.p2{top:200px;right:100px;}
+.p3{bottom:150px;left:100px;}
+.p4{bottom:200px;right:80px;}
 
 @keyframes float{
-0%{
-transform:translateY(0px) rotate(0deg);
+0%{transform:translateY(0px);}
+50%{transform:translateY(-25px);}
+100%{transform:translateY(0px);}
 }
-50%{
-transform:translateY(-40px) rotate(180deg);
+
+/* NAVBAR */
+
+.nav{
+position:fixed;
+top:0;
+width:100%;
+padding:20px 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,.45);
+backdrop-filter:blur(15px);
+border-bottom:1px solid rgba(255,255,255,.08);
+z-index:999;
 }
-100%{
-transform:translateY(0px) rotate(360deg);
+
+.logo-small{
+display:flex;
+align-items:center;
+gap:15px;
 }
+
+.logo-small img{
+width:70px;
+}
+
+.logo-small h2{
+font-size:28px;
+font-weight:900;
+line-height:1;
+}
+
+.menu{
+display:flex;
+gap:40px;
+}
+
+.menu a{
+text-decoration:none;
+color:#ddd;
+font-weight:700;
+transition:.3s;
+}
+
+.menu a:hover{
+color:#ffb300;
 }
 
 /* HERO */
@@ -103,152 +123,125 @@ min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
-text-align:center;
-padding:40px;
+padding:120px 30px 80px;
 position:relative;
-}
-
-.hero::before{
-content:'';
-position:absolute;
-inset:0;
-background:
-linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.9)),
-url('https://images.unsplash.com/photo-1627856014754-2907e2355d24?q=80&w=2070&auto=format&fit=crop');
-background-size:cover;
-background-position:center;
-opacity:.4;
 }
 
 .hero-content{
+max-width:1300px;
+text-align:center;
 position:relative;
 z-index:2;
-max-width:1200px;
 }
 
-.logo{
-width:650px;
+/* MAIN LOGO */
+
+.main-logo{
+width:850px;
 max-width:100%;
-margin:auto;
-margin-bottom:30px;
-animation:logoFloat 5s ease-in-out infinite;
+animation:logoFloat 5s infinite ease-in-out;
 filter:
-drop-shadow(0 0 40px rgba(255,255,255,.25))
-drop-shadow(0 0 80px rgba(255,255,255,.15));
+drop-shadow(0 0 25px rgba(255,170,0,.25))
+drop-shadow(0 0 90px rgba(0,170,255,.18));
 }
 
 @keyframes logoFloat{
-0%{
-transform:translateY(0px);
-}
-50%{
-transform:translateY(-18px);
-}
-100%{
-transform:translateY(0px);
-}
+0%{transform:translateY(0px);}
+50%{transform:translateY(-18px);}
+100%{transform:translateY(0px);}
 }
 
-.badge{
-display:inline-block;
-padding:12px 24px;
-border-radius:999px;
-background:rgba(255,255,255,.08);
-border:1px solid rgba(255,255,255,.15);
-backdrop-filter:blur(10px);
-margin-bottom:25px;
-font-weight:700;
-}
-
-.title{
-font-size:90px;
+.subtitle{
+font-size:45px;
 font-weight:900;
-line-height:1;
+margin-top:20px;
 margin-bottom:25px;
-background:linear-gradient(to right,#fff,#bbb);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+}
+
+.subtitle span{
+color:#ffb300;
 }
 
 .desc{
-max-width:850px;
-margin:auto;
 font-size:22px;
-line-height:1.8;
-color:#b5b5b5;
+color:#ccc;
 margin-bottom:40px;
+line-height:1.8;
 }
+
+/* BUTTONS */
 
 .buttons{
 display:flex;
 justify-content:center;
-gap:20px;
+gap:25px;
 flex-wrap:wrap;
+margin-bottom:50px;
 }
 
 .btn{
-padding:18px 38px;
-border-radius:22px;
-font-size:18px;
+padding:22px 40px;
+border-radius:24px;
+font-size:20px;
 font-weight:800;
-transition:.3s;
 cursor:pointer;
+transition:.3s;
+border:none;
 }
 
-.btn-main{
-background:white;
-color:black;
-box-shadow:0 0 40px rgba(255,255,255,.2);
+.play-btn{
+background:linear-gradient(135deg,#ffb300,#ff7b00);
+color:white;
+box-shadow:0 0 40px rgba(255,170,0,.35);
 }
 
-.btn-main:hover{
-transform:scale(1.07);
+.play-btn:hover{
+transform:scale(1.08);
 }
 
-.btn-second{
-border:1px solid rgba(255,255,255,.2);
-background:rgba(255,255,255,.05);
-backdrop-filter:blur(10px);
+.discord-btn{
+background:linear-gradient(135deg,#5865F2,#7289da);
+color:white;
+box-shadow:0 0 40px rgba(88,101,242,.35);
 }
 
-.btn-second:hover{
-background:rgba(255,255,255,.12);
-transform:scale(1.05);
+.discord-btn:hover{
+transform:scale(1.08);
 }
 
 /* FEATURES */
 
 .section{
-padding:120px 30px;
-max-width:1400px;
+max-width:1450px;
 margin:auto;
+padding:110px 35px;
 }
 
 .section-title{
-text-align:center;
-font-size:65px;
+font-size:70px;
 font-weight:900;
+text-align:center;
 margin-bottom:20px;
 }
 
 .section-desc{
 text-align:center;
-color:#9a9a9a;
-font-size:20px;
+color:#aaa;
+font-size:22px;
 margin-bottom:70px;
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:30px;
 }
 
 .card{
-background:rgba(255,255,255,.04);
+background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.08);
-backdrop-filter:blur(12px);
-padding:40px;
+backdrop-filter:blur(18px);
+padding:45px;
 border-radius:35px;
 transition:.4s;
 position:relative;
@@ -259,7 +252,7 @@ overflow:hidden;
 content:'';
 position:absolute;
 inset:0;
-background:linear-gradient(to bottom right,rgba(255,255,255,.08),transparent);
+background:linear-gradient(135deg,rgba(255,255,255,.08),transparent);
 opacity:0;
 transition:.4s;
 }
@@ -270,22 +263,23 @@ opacity:1;
 
 .card:hover{
 transform:translateY(-12px) scale(1.02);
-border-color:rgba(255,255,255,.2);
+border-color:#ffb30055;
+box-shadow:0 0 40px rgba(255,170,0,.12);
 }
 
-.icon{
-font-size:55px;
-margin-bottom:20px;
+.card-icon{
+font-size:65px;
+margin-bottom:25px;
 }
 
 .card h3{
 font-size:34px;
-margin-bottom:16px;
+margin-bottom:15px;
 font-weight:900;
 }
 
 .card p{
-color:#b8b8b8;
+color:#c0c0c0;
 line-height:1.8;
 font-size:17px;
 }
@@ -294,67 +288,130 @@ font-size:17px;
 
 .stats{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:25px;
 }
 
 .stat{
-background:rgba(255,255,255,.04);
-padding:50px;
-border-radius:35px;
+background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.08);
+padding:45px;
+border-radius:35px;
 text-align:center;
+backdrop-filter:blur(15px);
 }
 
 .stat h2{
-font-size:70px;
+font-size:60px;
 font-weight:900;
-margin-bottom:12px;
+margin-bottom:10px;
+color:#ffb300;
 }
 
 .stat p{
-color:#999;
+color:#bbb;
 font-size:18px;
 }
 
-/* DISCORD */
+/* VIP */
 
-.discord-box{
-background:linear-gradient(135deg,#111,#1d1d1d);
-padding:90px 50px;
-border-radius:45px;
-text-align:center;
-border:1px solid rgba(255,255,255,.08);
+.vip-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:35px;
+}
+
+.vip{
+padding:50px;
+border-radius:35px;
+backdrop-filter:blur(18px);
+transition:.4s;
 position:relative;
 overflow:hidden;
 }
 
-.discord-box::before{
-content:'';
-position:absolute;
-width:500px;
-height:500px;
-background:rgba(255,255,255,.05);
-border-radius:999px;
-filter:blur(100px);
-top:-150px;
-right:-100px;
+.vip:hover{
+transform:translateY(-12px) scale(1.03);
 }
 
+.vip1{
+background:linear-gradient(135deg,#00c85322,#00ff9955);
+border:1px solid #00ff9955;
+}
+
+.vip2{
+background:linear-gradient(135deg,#8e24aa22,#d500f955);
+border:1px solid #d500f955;
+}
+
+.vip3{
+background:linear-gradient(135deg,#ff910022,#ff3d0055);
+border:1px solid #ff910055;
+}
+
+.vip h2{
+font-size:45px;
+margin-bottom:15px;
+font-weight:900;
+}
+
+.price{
+font-size:65px;
+font-weight:900;
+margin-bottom:25px;
+}
+
+.vip ul{
+list-style:none;
+margin-bottom:30px;
+}
+
+.vip ul li{
+margin-bottom:14px;
+font-size:18px;
+}
+
+.buy-btn{
+width:100%;
+padding:18px;
+border:none;
+border-radius:18px;
+font-size:19px;
+font-weight:900;
+cursor:pointer;
+background:white;
+color:black;
+transition:.3s;
+}
+
+.buy-btn:hover{
+transform:scale(1.05);
+}
+
+/* FOOTER */
+
 footer{
-padding:40px;
+padding:45px;
 text-align:center;
-color:#777;
 border-top:1px solid rgba(255,255,255,.08);
+color:#888;
 margin-top:60px;
 }
 
 /* MOBILE */
 
-@media(max-width:768px){
+@media(max-width:900px){
 
-.title{
-font-size:50px;
+.nav{
+padding:20px;
+}
+
+.menu{
+display:none;
+}
+
+.subtitle{
+font-size:28px;
 }
 
 .section-title{
@@ -362,11 +419,7 @@ font-size:42px;
 }
 
 .desc{
-font-size:17px;
-}
-
-.logo{
-width:100%;
+font-size:18px;
 }
 
 }
@@ -376,51 +429,68 @@ width:100%;
 
 <body>
 
-<!-- BACKGROUND -->
-<div class="bg-animation">
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
+<!-- FLOATING EMOJIS -->
+
+<div class="particle p1">🔥</div>
+<div class="particle p2">😍</div>
+<div class="particle p3">💎</div>
+<div class="particle p4">⚔️</div>
+
+<!-- NAVBAR -->
+
+<nav class="nav">
+
+<div class="logo-small">
+
+<img src="logo.png">
+
+<h2>
+SURVIVAL<br>
+ALÜMİNYUM
+</h2>
+
 </div>
 
+<div class="menu">
+<a href="">Anasayfa</a>
+<a href="">Özellikler</a>
+<a href="">VIP</a>
+<a href="">İstatistik</a>
+<a href="">Discord</a>
+</div>
+
+</nav>
+
 <!-- HERO -->
+
 <section class="hero">
 
 <div class="hero-content">
 
-<div class="badge">
-⚒️ Premium Minecraft Survival Sunucusu
-</div>
+<img src="logo.png" class="main-logo">
 
-<!-- LOGO -->
-<img
-src="logo.png"
-class="logo"
-alt="Survival Alüminyum Logo"
-/>
-
-<h1 class="title">
-SURVIVAL ALÜMİNYUM
+<h1 class="subtitle">
+🔥 EFSANE BİR <span>SURVIVAL</span> DENEYİMİ 🔥
 </h1>
 
 <p class="desc">
-💎 Gerçek survival deneyimi, özel eventler, gelişmiş ekonomi sistemi,
-⚔️ klan savaşları, 🎁 kasalar ve aktif oyuncu kitlesi ile premium Minecraft deneyimi seni bekliyor.
+⚔️ Klan savaşları, 💰 ekonomi sistemi, 🎁 özel kasalar,
+👑 rank sistemi ve 🚀 ultra akıcı gameplay ile premium Minecraft deneyimi seni bekliyor.
 </p>
 
 <div class="buttons">
 
-<button class="btn btn-main" onclick="copyIP()">
+<button class="btn play-btn" onclick="copyIP()">
 🎮 play.survivalaliminyum.com
 </button>
 
-<button class="btn btn-second">
+<button class="btn discord-btn">
 💬 Discord'a Katıl
 </button>
 
 </div>
 
-<p id="copyText" style="margin-top:20px;color:#aaa;font-weight:700;"></p>
+<p id="copyText" style="color:#ddd;font-weight:700;"></p>
 
 </div>
 
@@ -431,7 +501,7 @@ SURVIVAL ALÜMİNYUM
 <section class="section">
 
 <h2 class="section-title">
-🔥 Özel Sistemler
+⚡ Özel Sistemler
 </h2>
 
 <p class="section-desc">
@@ -441,50 +511,50 @@ Survival Alüminyum'un premium özelliklerini keşfet.
 <div class="grid">
 
 <div class="card">
-<div class="icon">⚔️</div>
+<div class="card-icon">⚔️</div>
 <h3>Klan Sistemi</h3>
 <p>
-Arkadaşlarınla takım kur, bölgeleri ele geçir ve savaşlarda üstünlük sağla.
+Arkadaşlarınla takım kur, savaşlara katıl ve bölgeleri ele geçir.
 </p>
 </div>
 
 <div class="card">
-<div class="icon">💰</div>
-<h3>Gelişmiş Ekonomi</h3>
-<p>
-Oyuncular arası ticaret, market sistemi ve premium ekonomi deneyimi.
-</p>
-</div>
-
-<div class="card">
-<div class="icon">🎁</div>
+<div class="card-icon">🎁</div>
 <h3>Kasa Sistemi</h3>
 <p>
-Özel itemler, kozmetikler ve nadir ödüller kazanabileceğin kasalar.
+Özel ödüller, kozmetikler ve nadir itemler kazan.
 </p>
 </div>
 
 <div class="card">
-<div class="icon">👑</div>
+<div class="card-icon">💰</div>
+<h3>Ekonomi Sistemi</h3>
+<p>
+Gelişmiş market sistemi ve oyuncular arası ticaret.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon">👑</div>
 <h3>Rank Sistemi</h3>
 <p>
-Görevleri tamamla, seviye atla ve yeni yeteneklerin kilidini aç.
+Görevleri tamamla, rank atla ve avantaj kazan.
 </p>
 </div>
 
 <div class="card">
-<div class="icon">🐉</div>
+<div class="card-icon">🐉</div>
 <h3>Boss Eventleri</h3>
 <p>
-Dev boss savaşlarına katıl, büyük ödüller kazan.
+Boss savaşlarına katıl ve büyük ödülleri kap.
 </p>
 </div>
 
 <div class="card">
-<div class="icon">🚀</div>
+<div class="card-icon">🚀</div>
 <h3>Lag'sız Deneyim</h3>
 <p>
-Optimize edilmiş güçlü altyapı sayesinde ultra akıcı oyun deneyimi.
+Optimize edilmiş güçlü altyapı ile ultra performans.
 </p>
 </div>
 
@@ -507,7 +577,7 @@ Sunucunun canlı durumunu takip et.
 <div class="stats">
 
 <div class="stat">
-<h2>500+</h2>
+<h2>521</h2>
 <p>👥 Aktif Oyuncu</p>
 </div>
 
@@ -517,7 +587,7 @@ Sunucunun canlı durumunu takip et.
 </div>
 
 <div class="stat">
-<h2>99%</h2>
+<h2>99.9%</h2>
 <p>⚡ Uptime</p>
 </div>
 
@@ -530,23 +600,76 @@ Sunucunun canlı durumunu takip et.
 
 </section>
 
-<!-- DISCORD -->
+<!-- VIP -->
 
 <section class="section">
 
-<div class="discord-box">
-
 <h2 class="section-title">
-💬 Discord Topluluğu
+💎 VIP Paketleri
 </h2>
 
 <p class="section-desc">
-Güncellemeleri kaçırma, oyuncularla sohbet et ve etkinliklere katıl.
+Sunucuya destek ol ve avantaj kazan.
 </p>
 
-<button class="btn btn-main">
-🚀 Discord'a Katıl
+<div class="vip-grid">
+
+<div class="vip vip1">
+
+<h2>VIP 👑</h2>
+
+<div class="price">₺99</div>
+
+<ul>
+<li>✔️ VIP Prefix</li>
+<li>✔️ VIP Kit</li>
+<li>✔️ +2 Home</li>
+<li>✔️ Market Avantajı</li>
+</ul>
+
+<button class="buy-btn">
+🛒 Satın Al
 </button>
+
+</div>
+
+<div class="vip vip2">
+
+<h2>ELITE ✨</h2>
+
+<div class="price">₺199</div>
+
+<ul>
+<li>✔️ Elite Prefix</li>
+<li>✔️ +5 Home</li>
+<li>✔️ Kasa Anahtarı</li>
+<li>✔️ Özel Kozmetikler</li>
+</ul>
+
+<button class="buy-btn">
+🛒 Satın Al
+</button>
+
+</div>
+
+<div class="vip vip3">
+
+<h2>LEGEND 🔥</h2>
+
+<div class="price">₺349</div>
+
+<ul>
+<li>✔️ Fly Yetkisi</li>
+<li>✔️ Legend Kit</li>
+<li>✔️ Özel Kozmetikler</li>
+<li>✔️ Tüm Avantajlar</li>
+</ul>
+
+<button class="buy-btn">
+🛒 Satın Al
+</button>
+
+</div>
 
 </div>
 
